@@ -61,8 +61,8 @@ cmake --build b/imgui --config Release --target install
 
 cmake -Hs/r8brain-free -Bb/r8brain-free -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i \
 	-DROOT=$PWD/d/r8brain-free
-#cmake --build b/imgui --config Debug --target install
-#cmake --build b/imgui --config Release --target install
+cmake --build b/r8brain-free --config Debug --target install
+cmake --build b/r8brain-free --config Release --target install
 
 
 cmake -Hd/kfr -Bb/kfr -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i \
@@ -71,4 +71,14 @@ cmake --build b/kfr --config Debug --target install
 cmake --build b/kfr --config Release --target install
 
 
+cmake -Hd/fftw3 -Bb/fftw3 -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=_d \
+	-DBUILD_SHARED_LIBS=0 -DBUILD_TESTS=0 -DDISABLE_FORTRAN=1 \
+	-DENABLE_AVX=1 -DENABLE_AVX2=1 -DENABLE_FLOAT=0 -DENABLE_SSE=1 -DENABLE_SSE2=1
+cmake --build b/fftw3 --config Debug --target install
+cmake --build b/fftw3 --config Release --target install
 
+cmake -Hd/fftw3 -Bb/fftw3f -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=_d \
+	-DBUILD_SHARED_LIBS=0 -DBUILD_TESTS=0 -DDISABLE_FORTRAN=1 \
+	-DENABLE_AVX=1 -DENABLE_AVX2=1 -DENABLE_FLOAT=1 -DENABLE_SSE=1 -DENABLE_SSE2=1
+cmake --build b/fftw3f --config Debug --target install
+cmake --build b/fftw3f --config Release --target install

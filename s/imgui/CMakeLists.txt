@@ -6,6 +6,8 @@ if(NOT IMGUI_DIR)
 endif()
 
 set(CMAKE_DEBUG_POSTFIX d)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANARD_REQUIRED)
 
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -59,8 +61,6 @@ install(EXPORT imgui-targets
     DESTINATION lib/cmake/imgui)
 install(FILES ${INSTALL_HEADERS}
     DESTINATION include)
-
-
 
 add_executable(example_glfw_opengl3 ${IMGUI_DIR}/examples/example_glfw_opengl3/main.cpp)
 target_link_libraries(example_glfw_opengl3

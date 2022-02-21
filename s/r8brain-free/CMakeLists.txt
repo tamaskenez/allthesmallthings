@@ -7,7 +7,7 @@ endif()
 
 set(CMAKE_DEBUG_POSTFIX d)
 
-add_library(r8brain-free STATIC
+set(INSTALL_HEADERS
 	${ROOT}/CDSPBlockConvolver.h
 	${ROOT}/CDSPFIRFilter.h
 	${ROOT}/CDSPFracInterpolator.h
@@ -20,11 +20,18 @@ add_library(r8brain-free STATIC
 	${ROOT}/CDSPSincFilterGen.h
 	${ROOT}/r8bbase.h
 	${ROOT}/r8bconf.h
+)
 
+set(INSTALL_PFFFT_DOUBLE_HEADER
+	${ROOT}/pffft_double/pffft_double.h
+)
+
+add_library(r8brain-free STATIC
+	${INSTALL_HEADERS}
 	${ROOT}/r8bbase.cpp
 	
 	${ROOT}/pffft_double/pffft_double.c
-	${ROOT}/pffft_double/pffft_double.h
+	${INSTALL_PFFFT_DOUBLE_HEADER}
 	${ROOT}/pffft_double/pffft_priv_impl.h
 	${ROOT}/pffft_double/simd/pf_avx_double.h
 	${ROOT}/pffft_double/simd/pf_double.h
@@ -35,3 +42,18 @@ add_library(r8brain-free STATIC
 )
 
 target_compile_definitions(r8brain-free PUBLIC R8B_PFFFT_DOUBLE=1)
+
+target_include_directories(r8brain-free PUBLIC
+    $<BUILD_INTERFACE:${ROOT}>
+    $<INSTALL_INTERFACE:include/r8brain-free>)
+
+install(TARGETS r8brain-free
+    EXPORT r8brain-free-targets DESTINATION lib)
+install(EXPORT r8brain-free-targets
+    FILE r8brain-free-config.cmake
+    NAMESPACE r8brain-free::
+    DESTINATION lib/cmake/r8brain-free)
+install(FILES ${INSTALL_HEADERS}
+    DESTINATION include/r8brain-free)
+install(FILES ${INSTALL_PFFFT_DOUBLE_HEADER}
+    DESTINATION include/r8brain-free/pffft_double)

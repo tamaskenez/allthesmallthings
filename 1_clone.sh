@@ -51,3 +51,7 @@ git_dep https://github.com/erincatto/box2d.git box2d
 git_dep https://github.com/avaneev/r8brain-free-src.git r8brain-free
 git_dep https://github.com/kfrlib/kfr.git kfr
 
+rm -rf d/fftw3
+readonly fftw_tarball_name='fftw-3.3.10'
+tar -xf "${fftw_tarball_name}.tar.gz" -C d
+mv "d/${fftw_tarball_name}" d/fftw3
