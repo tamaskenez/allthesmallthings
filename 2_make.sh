@@ -39,10 +39,12 @@ cmake -Hd/glfw -Bb/glfw -DCMAKE_INSTALL_PREFIX=$PWD/i \
 	-DGLFW_BUILD_TESTS=0
 cmake --build b/glfw --target install
 
-cmake -Hd/SDL -Bb/SDL -GXcode -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
-	-DSDL_SHARED=0 -DSDL_TEST=0
-cmake --build b/SDL --config Debug --target install
+rm -rf b/SDL
+cmake -Hd/SDL -Bb/SDL -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
+	-DSDL_SHARED=0 -DSDL_TEST=0 -DCMAKE_BUILD_TYPE=Release
 cmake --build b/SDL --config Release --target install
+cmake --build b/SDL --config Debug --target install
+
 
 cmake -Hd/SDL_image -Bb/SDL_image -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
 	-DCMAKE_BUILD_TYPE=Release \
@@ -82,3 +84,10 @@ cmake -Hd/fftw3 -Bb/fftw3f -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PR
 	-DENABLE_AVX=1 -DENABLE_AVX2=1 -DENABLE_FLOAT=1 -DENABLE_SSE=1 -DENABLE_SSE2=1
 cmake --build b/fftw3f --config Debug --target install
 cmake --build b/fftw3f --config Release --target install
+
+cmake -Hd/abseil -Bb/abseil -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i \
+	-DCMAKE_CXX_STANDARD=20 -DABSL_PROPAGATE_CXX_STD=1 -DBUILD_TESTING=0 -DABSL_LOCAL_GOOGLETEST_DIR=$PWD/d/googletest \
+	-DCMAKE_DEBUG_POSTFIX=d
+cmake --build b/abseil --config Debug --target install
+cmake --build b/abseil --config Release --target install
+
