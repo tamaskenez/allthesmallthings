@@ -5,7 +5,7 @@ if(NOT ROOT)
 	message(FATAL_ERROR "ROOT must be set to the r8brain-free root directory")
 endif()
 
-set(CMAKE_DEBUG_POSTFIX d)
+set(CMAKE_DEBUG_POSTFIX _d)
 
 set(INSTALL_HEADERS
 	${ROOT}/CDSPBlockConvolver.h
@@ -45,7 +45,7 @@ target_compile_definitions(r8brain-free PUBLIC R8B_PFFFT_DOUBLE=1)
 
 target_include_directories(r8brain-free PUBLIC
     $<BUILD_INTERFACE:${ROOT}>
-    $<INSTALL_INTERFACE:include/r8brain-free>)
+    $<INSTALL_INTERFACE:include>)
 
 install(TARGETS r8brain-free
     EXPORT r8brain-free-targets DESTINATION lib)

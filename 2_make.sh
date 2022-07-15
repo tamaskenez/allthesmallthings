@@ -3,11 +3,9 @@ set -euo pipefail
 
 export CMAKE_BUILD_PARALLEL_LEVEL=8
 
-if true; then
-	cmake -Hd/JUCE -Bb/JUCE -GXcode -DCMAKE_INSTALL_PREFIX=$PWD/i_juce \
-		-DJUCE_BUILD_EXAMPLES=1 -DJUCE_BUILD_EXTRAS=1 -DJUCE_ENABLE_MODULE_SOURCE_GROUPS=1	
-	cmake --build b/JUCE --config Debug --target install
-fi
+cmake -Hd/JUCE -Bb/JUCE -GXcode -DCMAKE_INSTALL_PREFIX=$PWD/i_juce \
+	-DJUCE_BUILD_EXAMPLES=0 -DJUCE_BUILD_EXTRAS=1 -DJUCE_ENABLE_MODULE_SOURCE_GROUPS=1	
+cmake --build b/JUCE --config Debug --target install
 
 cmake -Hd/gflags -Bb/gflags -DCMAKE_INSTALL_PREFIX=$PWD/i \
 	-DCMAKE_BUILD_TYPE=Release \
@@ -39,16 +37,16 @@ cmake -Hd/glfw -Bb/glfw -DCMAKE_INSTALL_PREFIX=$PWD/i \
 	-DGLFW_BUILD_TESTS=0
 cmake --build b/glfw --target install
 
-rm -rf b/SDL
+# rm -rf b/SDL
 cmake -Hd/SDL -Bb/SDL -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
 	-DSDL_SHARED=0 -DSDL_TEST=0 -DCMAKE_BUILD_TYPE=Release
 cmake --build b/SDL --config Release --target install
 cmake --build b/SDL --config Debug --target install
 
 
-cmake -Hd/SDL_image -Bb/SDL_image -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
+cmake -Hd/SDL_image -Bb/SDL_image -DCMAKE_INSTALL_PREFIX=$PWD/i \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DSUPPORT_JPG=0 -DBUILD_SHARED_LIBS=0
+	-DSDL2IMAGE_SAMPLES=0 -DBUILD_SHARED_LIBS=0
 cmake --build b/SDL_image --target install
 
 cmake -Hd/box2d -Bb/box2d -GXcode -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
