@@ -89,3 +89,9 @@ cmake -Hd/abseil -Bb/abseil -GXcode -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_P
 cmake --build b/abseil --config Debug --target install
 cmake --build b/abseil --config Release --target install
 
+cmake -Hd/libnyquist -Bb/libnyquist -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_PREFIX=$PWD/i \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DLIBNYQUIST_BUILD_EXAMPLE=0 -DCMAKE_CXX_STANDARD=17
+cmake --build b/libnyquist --target install
+
+

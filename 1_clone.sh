@@ -51,6 +51,7 @@ git_dep https://github.com/erincatto/box2d.git box2d
 git_dep https://github.com/avaneev/r8brain-free-src.git r8brain-free
 git_dep https://github.com/kfrlib/kfr.git kfr
 git_dep https://github.com/abseil/abseil-cpp.git abseil
+git_dep https://github.com/ddiakopoulos/libnyquist.git libnyquist
 
 rm -rf d/fftw3
 readonly fftw_tarball_name='fftw-3.3.10'
