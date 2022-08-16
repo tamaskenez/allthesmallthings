@@ -94,4 +94,18 @@ cmake -Hd/libnyquist -Bb/libnyquist -DCMAKE_PREFIX_PATH=$PWD/i -DCMAKE_INSTALL_P
 	-DLIBNYQUIST_BUILD_EXAMPLE=0 -DCMAKE_CXX_STANDARD=17
 cmake --build b/libnyquist --target install
 
+cmake -Hd/readerwriterqueue -Bb/readerwriterqueue -DCMAKE_INSTALL_PREFIX=$PWD/i
+cmake --build b/readerwriterqueue --target install
+
+cmake -Hs/steamaudio -Bb/steamaudio -DCMAKE_INSTALL_PREFIX=$PWD/i -DSTEAMAUDIO_DIR=${PWD}/d/steamaudio
+cmake --build b/steamaudio --target install
+
+cmake -Hd/glm -Bb/glm -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_BUILD_TYPE=Release \
+	-DBUILD_SHARED_LIBS=0 -DBUILD_TESTING=0
+cmake --build b/glm --target install
+
+cmake -Hd/eigen -Bb/eigen -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_BUILD_TYPE=Release \
+	-DBUILD_TESTING=0 -DEIGEN_BUILD_DOC=0 -DEIGEN_BUILD_TESTING=0
+
+
 

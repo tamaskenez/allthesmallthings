@@ -53,8 +53,22 @@ git_dep https://github.com/kfrlib/kfr.git kfr
 git_dep https://github.com/abseil/abseil-cpp.git abseil
 git_dep https://github.com/ddiakopoulos/libnyquist.git libnyquist
 git_dep https://github.com/cameron314/readerwriterqueue.git readerwriterqueue
+git_dep https://github.com/g-truc/glm.git glm
+git_dep https://gitlab.com/libeigen/eigen.git eigen
 
 rm -rf d/fftw3
 readonly fftw_tarball_name='fftw-3.3.10'
 tar -xf "${fftw_tarball_name}.tar.gz" -C d
 mv "d/${fftw_tarball_name}" d/fftw3
+
+readonly STEAMAUDIO_RELEASE='4.1.1'
+readonly STEAMAUDIO_FILENAME_STEM="steamaudio_${STEAMAUDIO_RELEASE}"
+if [[ ! -d "d/steamaudio" ]]; then
+    exit 1
+    rm ${STEAMAUDIO_FILENAME_STEM}.zip
+    wget \
+        https://github.com/ValveSoftware/steam-audio/releases/download/v${STEAMAUDIO_RELEASE}/${STEAMAUDIO_FILENAME_STEM}.zip
+    unzip -q ${STEAMAUDIO_FILENAME_STEM}.zip -d d
+    rm ${STEAMAUDIO_FILENAME_STEM}.zip
+fi
+

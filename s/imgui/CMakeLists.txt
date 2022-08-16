@@ -7,7 +7,7 @@ endif()
 
 set(CMAKE_DEBUG_POSTFIX d)
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANARD_REQUIRED)
+set(CMAKE_CXX_STANDARD_REQUIRED)
 
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
