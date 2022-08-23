@@ -64,8 +64,7 @@ mv "d/${fftw_tarball_name}" d/fftw3
 readonly STEAMAUDIO_RELEASE='4.1.1'
 readonly STEAMAUDIO_FILENAME_STEM="steamaudio_${STEAMAUDIO_RELEASE}"
 if [[ ! -d "d/steamaudio" ]]; then
-    exit 1
-    rm ${STEAMAUDIO_FILENAME_STEM}.zip
+    rm -rf ${STEAMAUDIO_FILENAME_STEM}.zip
     wget \
         https://github.com/ValveSoftware/steam-audio/releases/download/v${STEAMAUDIO_RELEASE}/${STEAMAUDIO_FILENAME_STEM}.zip
     unzip -q ${STEAMAUDIO_FILENAME_STEM}.zip -d d
