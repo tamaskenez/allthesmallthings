@@ -107,5 +107,8 @@ cmake --build b/glm --target install
 cmake -Hd/eigen -Bb/eigen -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_BUILD_TYPE=Release \
 	-DBUILD_TESTING=0 -DEIGEN_BUILD_DOC=0 -DEIGEN_BUILD_TESTING=0
 
+cmake -Hd/muFFT -Bb/muFFT -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_BUILD_TYPE=Release \
+	-DMUFFT_ENABLE_FFTW=0
+cmake --build b/muFFT --target install
 
 
