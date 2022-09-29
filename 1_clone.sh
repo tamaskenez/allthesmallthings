@@ -56,6 +56,8 @@ git_dep https://github.com/cameron314/readerwriterqueue.git readerwriterqueue
 git_dep https://github.com/g-truc/glm.git glm
 git_dep https://gitlab.com/libeigen/eigen.git eigen
 git_dep https://github.com/Themaister/muFFT.git muFFT
+git_dep https://github.com/tamaskenez/microlib.git microlib
+git_dep https://github.com/tamaskenez/microlib2.git microlib2
 
 rm -rf d/fftw3
 readonly fftw_tarball_name='fftw-3.3.10'

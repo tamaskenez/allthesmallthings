@@ -111,4 +111,11 @@ cmake -Hd/muFFT -Bb/muFFT -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_BUILD_TYPE=Relea
 	-DMUFFT_ENABLE_FFTW=0
 cmake --build b/muFFT --target install
 
+cmake -Hd/microlib -Bb/microlib -DCMAKE_INSTALL_PREFIX=$PWD/i -GXcode
+cmake --build b/microlib --config Debug --target install
+cmake --build b/microlib --config Release --target install
+
+cmake -Hd/microlib2 -Bb/microlib2 -DCMAKE_INSTALL_PREFIX=$PWD/i -GXcode
+cmake --build b/microlib2 --config Debug --target install
+cmake --build b/microlib2 --config Release --target install
 
