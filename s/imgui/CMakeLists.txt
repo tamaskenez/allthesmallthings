@@ -33,7 +33,7 @@ target_include_directories(imgui PUBLIC
 target_compile_definitions(imgui PUBLIC IMGUI_DISABLE_INCLUDE_IMCONFIG_H)
 
 set(INSTALL_TARGETS imgui)
-set(INSTALL_HEADERS ${ROOT}/imgui.h)
+set(INSTALL_HEADERS ${ROOT}/imgui.h ${ROOT}/imconfig.h)
 
 foreach(BACKEND glfw opengl3 sdl sdlrenderer)
 	set(NAME imgui_impl_${BACKEND})
