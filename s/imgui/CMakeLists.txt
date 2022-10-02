@@ -30,8 +30,7 @@ add_library(imgui STATIC
 target_include_directories(imgui PUBLIC
     $<BUILD_INTERFACE:${ROOT}>
     $<INSTALL_INTERFACE:include>)
-target_compile_definitions(imgui PUBLIC IMGUI_DISABLE_INCLUDE_IMCONFIG_H)
-
+	
 set(INSTALL_TARGETS imgui)
 set(INSTALL_HEADERS ${ROOT}/imgui.h ${ROOT}/imconfig.h)
 
