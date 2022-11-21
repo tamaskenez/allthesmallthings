@@ -22,4 +22,4 @@ The `1_clone.sh` script clones, the `2_make.sh` script builds and installs the f
 - [muFFT](https://github.com/Themaister/muFFT.git)
 - [fftw](https://github.com/FFTW/fftw3)
 - [steamaudio](https://github.com/ValveSoftware/steam-audio) - `CMakeLists.txt` provided for the binary release, not the repo.
-- [microlib](git_dep https://github.com/tamaskenez/microlib.git)
+- [microlib](https://github.com/tamaskenez/microlib.git)
