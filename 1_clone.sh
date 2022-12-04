@@ -64,7 +64,7 @@ readonly fftw_tarball_name='fftw-3.3.10'
 tar -xf "${fftw_tarball_name}.tar.gz" -C d
 mv "d/${fftw_tarball_name}" d/fftw3
 
-readonly STEAMAUDIO_RELEASE='4.1.1'
+readonly STEAMAUDIO_RELEASE='4.1.2'
 readonly STEAMAUDIO_FILENAME_STEM="steamaudio_${STEAMAUDIO_RELEASE}"
 if [[ ! -d "d/steamaudio" ]]; then
     rm -rf ${STEAMAUDIO_FILENAME_STEM}.zip
