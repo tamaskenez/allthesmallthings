@@ -45,8 +45,8 @@ git_dep https://github.com/google/glog.git glog
 git_dep https://github.com/google/googletest.git googletest
 git_dep https://github.com/glfw/glfw.git glfw
 git_dep https://github.com/ocornut/imgui.git imgui
-git_dep https://github.com/libsdl-org/SDL.git SDL
-git_dep https://github.com/libsdl-org/SDL_image.git SDL_image
+git_dep https://github.com/libsdl-org/SDL.git SDL release-2.26.1
+git_dep https://github.com/libsdl-org/SDL_image.git SDL_image release-2.6.2
 git_dep https://github.com/erincatto/box2d.git box2d
 git_dep https://github.com/avaneev/r8brain-free-src.git r8brain-free
 git_dep https://github.com/kfrlib/kfr.git kfr

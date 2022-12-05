@@ -38,12 +38,10 @@ cmake -Hd/glfw -Bb/glfw -DCMAKE_INSTALL_PREFIX=$PWD/i \
     -DGLFW_BUILD_TESTS=0
 cmake --build b/glfw --target install
 
-# rm -rf b/SDL
 cmake -Hd/SDL -Bb/SDL -DCMAKE_INSTALL_PREFIX=$PWD/i -DCMAKE_DEBUG_POSTFIX=d \
-    -DSDL_SHARED=0 -DSDL_TEST=0 -DCMAKE_BUILD_TYPE=Release
-cmake --build b/SDL --config Release --target install
-cmake --build b/SDL --config Debug --target install
-
+    -DSDL_SHARED=0 -DSDL_TEST=0 -DCMAKE_BUILD_TYPE=Release \
+    -DSDL_SYSTEM_ICONV=0
+cmake --build b/SDL --target install
 
 cmake -Hd/SDL_image -Bb/SDL_image -DCMAKE_INSTALL_PREFIX=$PWD/i \
     -DCMAKE_BUILD_TYPE=Release \
