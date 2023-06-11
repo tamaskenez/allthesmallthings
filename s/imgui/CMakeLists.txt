@@ -34,7 +34,7 @@ target_include_directories(imgui PUBLIC
 set(INSTALL_TARGETS imgui)
 set(INSTALL_HEADERS ${ROOT}/imgui.h ${ROOT}/imconfig.h)
 
-foreach(BACKEND glfw opengl3 sdl sdlrenderer)
+foreach(BACKEND glfw opengl3 sdl2 sdlrenderer2)
 	set(NAME imgui_impl_${BACKEND})
 	set(HEADER ${ROOT}/backends/${NAME}.h)
 	add_library(${NAME} STATIC ${ROOT}/backends/${NAME}.cpp ${HEADER})
@@ -49,8 +49,8 @@ endforeach()
 target_link_libraries(imgui_impl_glfw PRIVATE glfw)
 target_sources(imgui_impl_opengl3 PRIVATE ${ROOT}/backends/imgui_impl_opengl3_loader.h)
 target_link_libraries(imgui_impl_opengl3 PRIVATE OpenGL::GL)
-target_link_libraries(imgui_impl_sdl PRIVATE SDL2::SDL2-static)
-target_link_libraries(imgui_impl_sdlrenderer PRIVATE SDL2::SDL2-static)
+target_link_libraries(imgui_impl_sdl2 PRIVATE SDL2::SDL2-static)
+target_link_libraries(imgui_impl_sdlrenderer2 PRIVATE SDL2::SDL2-static)
 
 install(TARGETS ${INSTALL_TARGETS}
     EXPORT imgui-targets DESTINATION lib)
@@ -66,12 +66,12 @@ target_link_libraries(example_glfw_opengl3
 	PRIVATE imgui imgui_impl_glfw imgui_impl_opengl3 glfw
 )
 
-add_executable(example_sdl_sdlrenderer ${IMGUI_DIR}/examples/example_sdl_sdlrenderer/main.cpp)
-target_link_libraries(example_sdl_sdlrenderer
-	PRIVATE imgui imgui_impl_sdl imgui_impl_sdlrenderer SDL2::SDL2-static SDL2::SDL2main
+add_executable(example_sdl2_sdlrenderer2 ${IMGUI_DIR}/examples/example_sdl2_sdlrenderer2/main.cpp)
+target_link_libraries(example_sdl2_sdlrenderer2
+	PRIVATE imgui imgui_impl_sdl2 imgui_impl_sdlrenderer2 SDL2::SDL2-static SDL2::SDL2main
 )
 
-add_executable(example_sdl_opengl3 ${IMGUI_DIR}/examples/example_sdl_opengl3/main.cpp)
-target_link_libraries(example_sdl_opengl3
-	PRIVATE imgui imgui_impl_sdl imgui_impl_opengl3 SDL2::SDL2-static SDL2::SDL2main
+add_executable(example_sdl2_opengl3 ${IMGUI_DIR}/examples/example_sdl2_opengl3/main.cpp)
+target_link_libraries(example_sdl2_opengl3
+	PRIVATE imgui imgui_impl_sdl2 imgui_impl_opengl3 SDL2::SDL2-static SDL2::SDL2main
 )
